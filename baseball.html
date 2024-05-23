@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Analytics in Baseball</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Data Analytics in Baseball</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="resume.html">Resume</a>
+        <a href="projects.html">Projects</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="intro">
+        <h2>Introduction</h2>
+        <p>
+          The position of umpiring can be a strenuous one: an average game
+          consists of over 120 pitches, requiring the umpire to ‘call’ whether
+          the pitches are balls or strikes. This project is an attempt to
+          predict the performance of umpires using 3 different datasets. Pitch
+          tracking technology known as PITCHf/x provide locations of pitches and
+          other statistics from each pitch are collected. On average, umpires
+          miss about 10 percent of calls.
+        </p>
+        <p>
+          This project reports on the call precision of a particular umpire
+          through the use of Bayesian logistic models. Various models were
+          generated to compare these attributes over three separate umpires.
+        </p>
+      </section>
+
+      <section id="data">
+        <h2>Data Description</h2>
+        <p>
+          The data from the PITCHf/x software was provided through spreadsheets
+          of various pitch reports spanning from 2018-2022. Each record contains
+          92 different features, ranging from various player statistics to the x
+          and z-axis position coordinates of the ball.
+        </p>
+        <p>
+          Initial data sets required evaluation to develop meaningful variables
+          for feature selection. For instance, a variable was developed to
+          indicate an umpire's incorrect call based on pitch locations.
+        </p>
+      </section>
+
+      <section id="methodology">
+        <h2>Methodology</h2>
+        <p>
+          Determining important features for the models was challenging due to
+          the number of variables in the datasets. Initially, models of
+          intuitive features like pitch velocities and spin rates were created
+          but did not perform well.
+        </p>
+        <p>
+          Model performance was ultimately improved by introducing manually
+          calculated variables. These variables, known as 'x_dis' and 'z_dis',
+          calculate the distance to the nearest strikezone in the x and z
+          direction. This metric is one of the best for predicting umpire
+          performance as seen by the model comparison.
+        </p>
+      </section>
+
+      <section id="models">
+        <h2>Models and Evaluation</h2>
+        <p>
+          Various Bayesian logistic models were developed and compared to
+          determine the best predictors of umpire call precision. Below are some
+          of the models and their evaluations:
+        </p>
+
+        <h3>Model A: 'plate_x', 'plate_z'</h3>
+        <p>
+          This baseline model predicts umpire ability based solely on pitch
+          location.
+        </p>
+        <img src="images/model_a_coefficients.png" alt="Model A Coefficients" />
+
+        <h3>Model B: 'plate_x', 'plate_z', 'delta_run_exp'</h3>
+        <p>
+          This model introduces 'delta_run_exp' which indicates the change in
+          run expectancy.
+        </p>
+        <img src="images/model_b_coefficients.png" alt="Model B Coefficients" />
+
+        <h3>Model C: 'x_dis', 'z_dis'</h3>
+        <p>
+          This model uses manually calculated distances to the nearest strike
+          zone boundaries.
+        </p>
+        <img src="images/model_c_coefficients.png" alt="Model C Coefficients" />
+
+        <h3>Model D: 'x_dis', 'z_dis', 'delta_run_exp'</h3>
+        <p>This model combines the distance metrics with 'delta_run_exp'.</p>
+        <img src="images/model_d_coefficients.png" alt="Model D Coefficients" />
+
+        <h3>Model E: 'x_dis', 'z_dis', 'pitcher_walkRate'</h3>
+        <p>
+          This model includes the pitcher's walk rate as an additional
+          predictor.
+        </p>
+        <img src="images/model_e_coefficients.png" alt="Model E Coefficients" />
+      </section>
+
+      <section id="results">
+        <h2>Results and Discussion</h2>
+        <p>
+          Model D performed the best across all umpire data sets, indicating
+          that 'x_dis', 'z_dis', and 'delta_run_exp' are the most effective
+          predictors of umpire accuracy. The table ranking of models can be seen
+          below using LOOCV:
+        </p>
+        <img src="images/model_comparison_table.png" alt="Model Comparison" />
+        <p>
+          LOOCV is a type of cross-validation method in which a single data
+          point is removed from the dataset, and the model is trained on the
+          remaining data points. The removed data point is then used as a test
+          case to evaluate the model's performance. A visual comparison of this
+          table can be seen below.
+        </p>
+        <img src="images/model_comparison_visual.png" alt="Model Comparison" />
+      </section>
+
+      <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>
+          The Bayesian logistic modeling approach effectively identified key
+          predictors of umpire call precision. The best predictors were found to
+          be the distances from pitch location to strike zone boundaries and the
+          change in run expectancy.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2024 Jasper Van Lier</p>
+    </footer>
+  </body>
+</html>

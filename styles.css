@@ -15,7 +15,6 @@ header {
   color: black;
   padding: 1em 0;
   text-align: center;
-  margin-bottom: 2em;
 }
 
 header h1 {
@@ -35,12 +34,23 @@ header nav ul li {
 header nav ul li a {
   text-decoration: none;
   color: black;
+  padding: 5px 10px;
+  border: 2px solid rgba(30, 154, 173, 1);
+  border-radius: 5px;
+  background-color: white;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 header nav ul li a:hover {
-  text-decoration: underline;
+  background-color: rgba(30, 154, 173, 1);
+  color: white;
 }
-
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px 0;
+}
 section {
   padding: 2em;
   width: 80%;
@@ -49,7 +59,7 @@ section {
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  margin-bottom: 2em;
+  margin-bottom: 2em; /* Add space between sections */
 }
 
 h2 {
