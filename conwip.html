@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CONWIP System Analysis</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>CONWIP System Analysis</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="intro">
+        <h2>Introduction</h2>
+        <p>
+          This project showcases the ability to gain valuable insights on
+          manufacturing processes given little information. The system is
+          multi-product and has 3 workstations which products are developed.
+          CONWIP refers to the fact that the system will always have the same
+          number of products in the system (CONstant Work-In-Progress)
+        </p>
+        <p>The figure below shows the pathing the 2 products must take.</p>
+        <img src="images/CONWIP_System.png" alt="CONWIP system" />
+        <p>
+          Using an approximation algorithm for marie's mean value algorithm, do
+          12 iterations on the two product problem with CONSTANT WIP Limits of
+          (6, 10). The networks above are the routings for the two products. The
+          mean service time (in hours) for these two products are:
+        </p>
+        <table>
+          <tr>
+            <th></th>
+            <th>WS1</th>
+            <th>WS2</th>
+            <th>WS3</th>
+          </tr>
+          <tr>
+            <td>Prod 1</td>
+            <td>0.5</td>
+            <td>0.75</td>
+            <td>0.8</td>
+          </tr>
+          <tr>
+            <td>Prod 2</td>
+            <td>1.6</td>
+            <td>1.2</td>
+            <td>0.5</td>
+          </tr>
+        </table>
+      </section>
+
+      <section id="intro">
+        <h2>Introduction</h2>
+        <p>
+          The purpose of this exercise/project is to demonstrate how one is able
+          to calculate workstation and factory performance measures using
+          limited information. In this case, the only values we are working with
+          are the service times for each product on each workstation and the
+          route each product takes.
+        </p>
+        <p>
+          The approximation for marie's mean value algorithm is extremely useful
+          for situations where there are multiple products which have to take
+          different paths. Using just Marie's Mean Value algorithm would result
+          in too many calculations.
+        </p>
+        <p>
+          Source: Curry, G. L., & Feldman, R. M. (2011). Manufacturing Systems
+          Modeling and analysis. Springer-Verlag Berlin Heidelberg.
+        </p>
+      </section>
+
+      <section id="body">
+        <h2>Process</h2>
+        <p>
+          Taking the information from the workstation flow diagrams, we can
+          create a p-matrix for both products. Then using this, a vector for
+          relative flow rates can be found using Property 8.1 (Curry). Below is
+          the diagram and formula for relative flow:
+        </p>
+        <img src="images/CONWIP_rvector.png" alt="r vector calculation" />
+        <p>
+          Now all of the hand calculation is done and a code was written to
+          calculate each iteration of the approximation algorithm. An
+          explanation for the steps needed to complete the technique can be
+          found in Chapter 8 of Curry's textbook. This technique converges on a
+          value if enough iterations are performed and provides great accuracy.
+        </p>
+        <img src="images/CONWIP_code.png" alt="CONWIP code" />
+        <p>
+          Source: Curry, G. L., & Feldman, R. M. (2011). Manufacturing Systems
+          Modeling and analysis. Springer-Verlag Berlin Heidelberg.
+        </p>
+      </section>
+      <section id="results">
+        <h2>Results</h2>
+        <p>
+          After running the python script, the workstation measures and total
+          system measures are calculated. The cycle time is the amount of time a
+          product takes to pass throuh the workstation/system. The throughput is
+          the rate at which the products are pulled through the system. WIP is
+          constant (hence the name CONWIP) for the system however the WIP at
+          each workstation can still be calculated. The utilization is the
+          proportion of time a workstation spends busy.
+        </p>
+        <img src="images/CONWIP_results.png" alt="CONWIP code results" />
+      </section>
+    </main>
+  </body>
+</html>
