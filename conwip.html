@@ -31,10 +31,11 @@
         <p>The figure below shows the pathing the 2 products must take.</p>
         <img src="images/CONWIP_System.png" alt="CONWIP system" />
         <p>
-          Using an approximation algorithm for marie's mean value algorithm, do
-          12 iterations on the two product problem with CONSTANT WIP Limits of
-          (6, 10). The networks above are the routings for the two products. The
-          mean service time (in hours) for these two products are:
+          Problem Statement: Using an approximation algorithm for Marie's Mean
+          Value Algorithm, do 12 iterations on the two product problem with
+          CONSTANT WIP Limits of (6, 10). The networks above are the routings
+          for the two products. The mean service time (in hours) for these two
+          products are:
         </p>
         <table>
           <tr>
@@ -58,8 +59,8 @@
         </table>
       </section>
 
-      <section id="intro">
-        <h2>Introduction</h2>
+      <section id="prob">
+        <h2>Problem</h2>
         <p>
           The purpose of this exercise/project is to demonstrate how one is able
           to calculate workstation and factory performance measures using
@@ -70,8 +71,10 @@
         <p>
           The approximation for marie's mean value algorithm is extremely useful
           for situations where there are multiple products which have to take
-          different paths. Using just Marie's Mean Value algorithm would result
-          in too many calculations.
+          different paths. Using no approximation for Marie's Mean Value
+          algorithm would be more accurate however, when dealing with multiple
+          products and pathing the calculations become too complex to handle
+          (Curry).
         </p>
         <p>
           Source: Curry, G. L., & Feldman, R. M. (2011). Manufacturing Systems
@@ -85,7 +88,8 @@
           Taking the information from the workstation flow diagrams, we can
           create a p-matrix for both products. Then using this, a vector for
           relative flow rates can be found using Property 8.1 (Curry). Below is
-          the diagram and formula for relative flow:
+          the diagram and formula for the relative flows of each workstation and
+          product:
         </p>
         <img src="images/CONWIP_rvector.png" alt="r vector calculation" />
         <p>
@@ -110,9 +114,19 @@
           the rate at which the products are pulled through the system. WIP is
           constant (hence the name CONWIP) for the system however the WIP at
           each workstation can still be calculated. The utilization is the
-          proportion of time a workstation spends busy.
+          proportion of time a workstation is busy.
         </p>
         <img src="images/CONWIP_results.png" alt="CONWIP code results" />
+
+        <p>
+          Clearly the numbers converge at their true value as more iterations
+          are performed which is exactly what we want to see when using an
+          approximation algorithm. From this data we can also make some
+          additional observations we were unable to make before. For example,
+          this production line can be significantly improved if the first
+          workstation had double the capacity. The utilization for workstaion 1
+          is nearly 1.0 indicating a bottleneck in the system.
+        </p>
       </section>
     </main>
   </body>
